@@ -6,7 +6,7 @@ var burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
   burger.selectAll(function(data) {
-    var hbsObject = {
+    var hbsObject = { 
       burgers: data
     };
     console.log(hbsObject);
@@ -15,20 +15,33 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  burger.create([
-    "name", "supreme"
+  console.log("DEVOURED: ", req.body.devoured);
+  burger.insertOne([
+    "burger_name", "devoured"
   ], [
-    req.body.name, req.body.sleepy
+    req.body.name, req.body.devoured
   ], function(result) {
-    res.json({ id: result.insertid });
+    res.redirect('/');
+    // res.json({ id: result.insertid });
     });
 
   });
+
+  // router.post("/api/burgers/:id", function(req, res) {
+  //   burger.insertOne([
+  //     "name", "supreme"
+  //   ], [
+  //     req.body.name, req.body.supreme
+  //   ], function(result) {
+  //     res.json({ id: result.insertid });
+  //     });
+  
+  //   });
   
   router.delete("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
-    burger.delete(condition, function(result) {
+    burger.deleteOne(condition, function(result) {
       if (result.affectedRows == 0) {
       } else {
           res.status(200).end();

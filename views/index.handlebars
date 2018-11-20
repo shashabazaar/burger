@@ -3,34 +3,31 @@
 <h2>Burgers that are not eaten</h2>
 
 <ul>
-  {{#each burgers}}
-    {{#unless eaten}}
-      {{> burgers/burger-block eaten=true}}
-    {{/unless}}
+  {{#each burgers}} 
+    {{#unless devoured}} 
+      {{> burgers/burger-block eaten=true}} 
+    {{/unless}} 
   {{/each}}
 </ul>
 
 <h2>Burgers that are eaten!</h2>
-
+<container>
 <ul>
-  {{#each burgers}}
-    {{#if eaten}}
-      {{> burgers/burger-block eaten=false}}
-    {{/if}}
-  {{/each}}    
+  {{#each burgers}} 
+    {{#if devoured}} {{> burgers/burger-block eaten=true}} {{/if}} {{/each}}
 </ul>
-
+</container>
 <h2>Add a Burger</h2>
 <form class="create-form">
   <div class="form-group">
-    <lable for="ca">Burger Name:</lable>
-    <input type="text" id="ca" name="name">
+    <label for="burger_name">Burger Name:</label>
+    <input type="text" id="burger_name" name="name">
   </div>
 
   <div class="form-group">
-    <lable for="eaten">Eaten?</lable><br>
-    <input type="radio" name="Eaten" value="1" checked> Not Eaten!<br>
-    <inout type+"radio" name="Eaten" value="0"> Eaten
+    <label for="eaten">Eaten?</label><br> 
+    <input type="radio" name="eaten" value="1" checked> Eaten!<br>
+    <input type="radio" name="eaten" value="0">  Not Eaten!<br>
   </div>
 
   <button type="submit">Add Burger</button>
