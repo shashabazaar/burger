@@ -19,6 +19,13 @@ button {
   
 }
 
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+}
+
 li {
   background-color: yellow;
   padding: 15px;
@@ -26,9 +33,7 @@ li {
   color: red;
   width: 50%;
   height: 0px;
-
-  
-  
+  list-style-type: none;
 }
 .label {
   font-weight: bold;
